@@ -384,7 +384,7 @@ Include the `dropbox-api` and `omniauth-dropbox` gems in your `Gemfile` and set 
 # Email Agent - 邮件触发器？
 `Receives events`
 
-Email Agent 在收到邮件收到的事件后，将立即发送它收到的内容。
+Email Agent 收到任何内容后，会立即发送邮件通知。
 
 You can specify the email’s subject line by providing a `subject` option, which can contain [Liquid](https://github.com/huginn/huginn/wiki/Formatting-Events-using-Liquid) formatting. E.g., you could provide `"Huginn email"` to set a simple subject, or `{{subject}}` to use the `subject` key from the incoming Event.
 
@@ -418,10 +418,10 @@ Set `expected_receive_period_in_days` to the maximum amount of time that you’d
 
 * * *
 
-# Event Formatting Agent - 处理输入事件
+# Event Formatting Agent - 替换、重构输入事件
 `Creates events` `Receives events` `Dry runs`
 
-Event Formatting Agent 允许您格式化传入的事件，根据需要添加新的字段。
+Event Formatting Agent 允许您格式化传入的事件，根据需要添加新的字段。可以用正则来替换输入中的某些元素。具体样例参考，[新京报 #5 清理版面字段格式 ](http://huginnio.herokuapp.com/scenarios/14/download)
 
 For example, here is a possible Event:
 ```
@@ -617,4 +617,5 @@ Specify the filename to use in `filename`, Liquid interpolation is possible to c
 Use [Liquid](https://github.com/huginn/huginn/wiki/Formatting-Events-using-Liquid) templating in `data` to specify which part of the received event should be written.
 
 This agent only emits a ‘file pointer’, not the data inside the files, the following agents can consume the created events: `CsvAgent`, `PostAgent`, `ReadFileAgent`. Read more about the concept in the [wiki](https://github.com/huginn/huginn/wiki/How-Huginn-works-with-files).
+
 * * *
